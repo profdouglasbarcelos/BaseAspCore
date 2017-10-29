@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Infrastructure.Identity;
-using Microsoft.AspNetCore.Identity;
-using ApplicationCore.Interfaces;
-using Infrastructure.Data;
-using Infrastructure.Logging;
-using Microsoft.EntityFrameworkCore;
-
-namespace WebMVC
+﻿namespace WebMVC
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Infrastructure.Identity;
+    using Microsoft.AspNetCore.Identity;
+    using ApplicationCore.Interfaces;
+    using Infrastructure.Data;
+    using Infrastructure.Logging;
+    using Microsoft.EntityFrameworkCore;
     public class Startup
     {
         private IServiceCollection _servicos;
@@ -30,7 +25,7 @@ namespace WebMVC
         {
             // use real database
             // ConfigureProductionServices(services);
-            
+
             // use in-memory database
             ConfigureTestingServices(services);
         }

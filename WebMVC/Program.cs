@@ -1,14 +1,14 @@
-﻿using Infrastructure.Data;
-using Infrastructure.Identity;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-
-namespace WebMVC
+﻿namespace WebMVC
 {
+    using Infrastructure.Data;
+    using Infrastructure.Identity;
+    using Microsoft.AspNetCore;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using System;
+
     public class Program
     {
         public static void Main(string[] args)
