@@ -11,6 +11,8 @@
     using Infrastructure.Logging;
     using Microsoft.EntityFrameworkCore;
     using System;
+    using Microsoft.AspNetCore.Http;
+    using System.Text;
 
     public class Startup
     {
@@ -108,10 +110,11 @@
             });
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
-
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
 
             services.AddMvc();
+            
+            _servicos = services;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -124,6 +127,8 @@
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
+                ListAllRegisteredServices(app);
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -140,6 +145,28 @@
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+        }
+
+        private void ListAllRegisteredServices(IApplicationBuilder app)
+        {
+            app.Map("/allservices", builder => builder.Run(async context =>
+            {
+                var sb = new StringBuilder();
+                sb.Append("<h1>All Services</h1>");
+                sb.Append("<table><thead>");
+                sb.Append("<tr><th>Type</th><th>Lifetime</th><th>Instance</th></tr>");
+                sb.Append("</thead><tbody>");
+                foreach (var svc in _servicos)
+                {
+                    sb.Append("<tr>");
+                    sb.Append($"<td>{svc.ServiceType.FullName}</td>");
+                    sb.Append($"<td>{svc.Lifetime}</td>");
+                    sb.Append($"<td>{svc.ImplementationType?.FullName}</td>");
+                    sb.Append("</tr>");
+                }
+                sb.Append("</tbody></table>");
+                await context.Response.WriteAsync(sb.ToString());
+            }));
         }
     }
 }
