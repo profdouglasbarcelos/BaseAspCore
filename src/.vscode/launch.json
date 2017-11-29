@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/WebMVC/bin/Debug/netcoreapp2.0/WebMVC.dll",
+            "program": "${workspaceFolder}/WebMVC/bin/Debug/netcoreapp2.0/WebMVC.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/WebMVC",
+            "cwd": "${workspaceFolder}/WebMVC",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {

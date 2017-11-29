@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/WebMVC/WebMVC.csproj"
+                "${workspaceFolder}/WebMVC/WebMVC.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
