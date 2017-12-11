@@ -13,9 +13,9 @@ namespace WebRazorPages.Controllers
     public class AccountController : Controller
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ILogger _logger;
+        private readonly IAppLogger<AccountController> _logger;
 
-        public AccountController(SignInManager<ApplicationUser> signInManager, ILogger<AccountController> logger)
+        public AccountController(SignInManager<ApplicationUser> signInManager, IAppLogger<AccountController> logger)
         {
             _signInManager = signInManager;
             _logger = logger;
